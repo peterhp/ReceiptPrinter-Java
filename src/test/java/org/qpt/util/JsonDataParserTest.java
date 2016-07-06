@@ -17,11 +17,6 @@ public class JsonDataParserTest {
     private static final String JSON_GOODS = "goods.json";
 
     private static InputStream getJsonStream(String strFile) {
-        System.out.println(
-                JsonDataParserTest.class.getClassLoader()
-                        .getResource(strFile)
-        );
-
         return JsonDataParserTest.class.getClassLoader()
                 .getResourceAsStream(strFile);
     }
@@ -29,7 +24,7 @@ public class JsonDataParserTest {
     private static Goods getTrueGoodsInJson() {
         Goods goods = new Goods("ITEM000003", "苹果");
         goods.setCategory("食品", "水果");
-        goods.setPrice(5.50f, "斤1");
+        goods.setPrice(5.50f, "斤");
 
         return goods;
     }

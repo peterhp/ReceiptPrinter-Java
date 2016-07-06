@@ -19,7 +19,8 @@ public class JsonDataParser {
     public static List<Goods> ReadGoodsFromStream(InputStream in)
             throws IOException {
         ArrayList<Goods> retArray = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(in, "UTF-8"));
         StringBuilder sb = new StringBuilder();
 
         String sCurrentLine;
