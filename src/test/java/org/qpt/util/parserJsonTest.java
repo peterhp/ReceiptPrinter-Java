@@ -1,8 +1,10 @@
 package org.qpt.util;
 
 import org.junit.Test;
+import org.qpt.receipt.Goods;
 
-import static org.junit.Assert.*;
+import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by JonirRings on 2016/7/6.
@@ -10,7 +12,22 @@ import static org.junit.Assert.*;
 public class parserJsonTest {
     @Test
     public void readFromFile() throws Exception {
-        parserJson.ReadFromFile()
+        InputStream in = parserJsonTest.class.getClassLoader().getResourceAsStream("goods.json");
+        List<Goods> list = parserJson.ReadFromStream(in);
+        for (Goods good :
+                list) {
+            printGood(good);
+        }
+    }
+
+    private void printGood(Goods good) {
+        System.out.println("BARCODE     " + good.getBarcode());
+        System.out.println("NAME        " + good.getName());
+        System.out.println("UNIT        " + good.getUnit());
+        System.out.println("CATEGORY    " + good.getCategory());
+        System.out.println("SUBCATEGORY " + good.getSubCategory());
+        System.out.println("PRICE       " + good.getPrice());
+        System.out.println("*********************************");
     }
 
 }
