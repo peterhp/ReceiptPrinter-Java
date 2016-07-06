@@ -29,6 +29,6 @@ public class GoodsTest {
         assertEquals(CATEGORY,      goods.getCategory());
         assertEquals(SUBCATEGORY,   goods.getSubCategory());
         assertEquals(UNIT,          goods.getUnit());
-        assertEquals(PRICE,         goods.getPrice());
+        assertEquals(PRICE,         goods.getPrice(), 0.001f);
     }
 }
