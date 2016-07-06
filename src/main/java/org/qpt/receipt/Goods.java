@@ -5,49 +5,79 @@ package org.qpt.receipt;
  */
 public class Goods {
 
-    private String m_strBarcode;
-    private String m_strName;
-    private String m_strCategory;
-    private String m_strSubCategory;
-    private String m_strUnit;
-    private float  m_fPrice;
+    private String barcode;
+    private String name;
+    private String category;
+    private String SubCategory;
+    private String unit;
+    private float price;
 
     public Goods(String barcode, String name) {
-        m_strBarcode = barcode;
-        m_strName = name;
-    }
-
-    public String getBarcode() {
-        return m_strBarcode;
-    }
-
-    public String getName() {
-        return m_strName;
+        this.barcode = barcode;
+        this.name = name;
     }
 
     public void setCategory(String category, String subcategory) {
-        m_strCategory = category;
-        m_strSubCategory = subcategory;
+        this.category = category;
+        SubCategory = subcategory;
+    }
+
+
+    public void setPrice(float price, String unit) {
+        this.unit = unit;
+        this.price = price;
+    }
+
+    //fastjson required method
+
+    public Goods() {
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCategory() {
-        return m_strCategory;
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getSubCategory() {
-        return m_strSubCategory;
+        return SubCategory;
     }
 
-    public void setPrice(float price, String unit) {
-        m_strUnit = unit;
-        m_fPrice = price;
+    public void setSubCategory(String subCategory) {
+        SubCategory = subCategory;
     }
 
     public String getUnit() {
-        return m_strUnit;
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public float getPrice() {
-        return m_fPrice;
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 }
