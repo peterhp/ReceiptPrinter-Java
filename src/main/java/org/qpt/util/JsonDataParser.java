@@ -14,21 +14,26 @@ import java.util.List;
 /**
  * Created by JonirRings on 2016/7/6.
  */
-public class parserJson {
-    static List<Goods> ReadFromStream(InputStream in) throws IOException {
-        ArrayList<Goods> retArray=new ArrayList<>();
+public class JsonDataParser {
+
+    public static List<Goods> ReadGoodsFromStream(InputStream in)
+            throws IOException {
+        ArrayList<Goods> retArray = new ArrayList<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(in));
         StringBuilder sb = new StringBuilder();
+
         String sCurrentLine;
         while ((sCurrentLine = br.readLine()) != null) {
             sb.append(sCurrentLine);
         }
+
         JSONArray ja = JSON.parseArray(sb.toString());
-        for (Object o:
-             ja) {
-            Goods goods = JSON.parseObject(o.toString(),Goods.class);
+        for (Object o : ja) {
+            Goods goods = JSON.parseObject(o.toString(), Goods.class);
             retArray.add(goods);
         }
+
         return retArray;
     }
+
 }
