@@ -10,17 +10,7 @@ import java.util.List;
  * Created by JonirRings on 2016/7/6.
  */
 public class parserJsonTest {
-    @Test
-    public void readFromFile() throws Exception {
-        InputStream in = parserJsonTest.class.getClassLoader().getResourceAsStream("goods.json");
-        List<Goods> list = parserJson.ReadFromStream(in);
-        for (Goods good :
-                list) {
-            printGood(good);
-        }
-    }
-
-    private void printGood(Goods good) {
+    private static void printGood(Goods good) {
         System.out.println("BARCODE     " + good.getBarcode());
         System.out.println("NAME        " + good.getName());
         System.out.println("UNIT        " + good.getUnit());
@@ -28,6 +18,13 @@ public class parserJsonTest {
         System.out.println("SUBCATEGORY " + good.getSubCategory());
         System.out.println("PRICE       " + good.getPrice());
         System.out.println("*********************************");
+    }
+
+    @Test
+    public void readFromFile() throws Exception {
+        InputStream in = parserJsonTest.class.getClassLoader().getResourceAsStream("goods.json");
+        List<Goods> list = parserJson.ReadFromStream(in);
+        list.stream().forEach(parserJsonTest::printGood);
     }
 
 }
