@@ -33,7 +33,8 @@ public class ItemTest {
         item.remove(3);
         assertEquals(2, item.getQuantity());
 
-        assertEquals(2, new Item(ItemTest.getGoods(), 2));
+        item = new Item(ItemTest.getGoods(), 2);
+        assertEquals(2, item.getQuantity());
     }
 
 }
