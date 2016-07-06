@@ -19,8 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ReceiptPrinter_main" target="1.8" />
-      <module name="ReceiptPrinter_test" target="1.8" />
+      <module name="ReceiptPrinter_main" target="1.7" />
+      <module name="ReceiptPrinter_test" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
