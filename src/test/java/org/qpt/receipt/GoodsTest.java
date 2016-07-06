@@ -10,10 +10,10 @@ import static org.junit.Assert.*;
 public class GoodsTest {
 
     private static final String BARCODE     = "ITEM000001";
-    private static final String NAME        = "¿É¿Ú¿ÉÀÖ";
-    private static final String UNIT        = "Æ¿";
-    private static final String CATEGORY    = "Ê³Æ·";
-    private static final String SUBCATEGORY = "Ì¼ËáÒûÁÏ";
+    private static final String NAME        = "å¯å£å¯ä¹";
+    private static final String UNIT        = "ç“¶";
+    private static final String CATEGORY    = "é£Ÿå“";
+    private static final String SUBCATEGORY = "ç¢³é…¸é¥®æ–™";
     private static final float  PRICE        = 3.00f;
 
     @Test
