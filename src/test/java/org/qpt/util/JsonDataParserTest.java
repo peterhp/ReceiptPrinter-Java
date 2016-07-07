@@ -3,14 +3,15 @@ package org.qpt.util;
 import org.junit.Test;
 import org.qpt.receipt.Cart;
 import org.qpt.receipt.Goods;
+import org.qpt.receipt.Offer;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * Created by JonirRings on 2016/7/6.
@@ -21,6 +22,7 @@ public class JsonDataParserTest {
 
     private static final String JSON_GOODS = "goods.json";
     private static final String JSON_CART = "cart.json";
+    private static final String JSON_OFFER = "offer.json";
 
     private static InputStream getJsonStream(String strFile) {
         return JsonDataParserTest.class.getClassLoader()
@@ -62,5 +64,17 @@ public class JsonDataParserTest {
         assertEquals(cart.QueryQuantity("ITEM000001"), 3);
         assertEquals(cart.QueryQuantity("ITEM000003"), 2);
         assertEquals(cart.QueryQuantity("ITEM000005"), 5);
+    }
+
+    @Test
+    public void readOfferFromStream() throws IOException {
+        InputStream in = JsonDataParserTest.getJsonStream(JSON_OFFER);
+        List<Offer> list = JsonDataParser.ReadOfferFromStream(in);
+        for (Offer offer :
+                list) {
+            if (offer.getType().equals("BUY_THREE_GET_ONE_FREE")) {
+                assertTrue(offer.getBarcodes().contains("ITEM000001"));
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * Created by Sora on 2016/7/6.
  */
-public class Buy3Free1Offer {
+public class Buy3Free1Offer extends Offer {
 
     Set<String> barcodeSet = new HashSet<>();
 
@@ -28,4 +28,5 @@ public class Buy3Free1Offer {
 
         return save;
     }
+
 }
