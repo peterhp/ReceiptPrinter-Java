@@ -4,9 +4,10 @@ import org.junit.Test;
 import org.qpt.receipt.Goods;
 
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by JonirRings on 2016/7/6.
@@ -24,7 +25,7 @@ public class JsonDataParserTest {
     private static Goods getTrueGoodsInJson() {
         Goods goods = new Goods("ITEM000003", "苹果");
         goods.setCategory("食品", "水果");
-        goods.setPrice(5.50f, "斤");
+        goods.setPrice(new BigDecimal("5.50"), "斤");
 
         return goods;
     }
@@ -43,7 +44,7 @@ public class JsonDataParserTest {
                 assertEquals(testGoods.getCategory(), goods.getCategory());
                 assertEquals(testGoods.getSubCategory(), goods.getSubCategory());
                 assertEquals(testGoods.getUnit(), goods.getUnit());
-                assertEquals(testGoods.getPrice(), goods.getPrice(), 0.001f);
+                assertEquals(testGoods.getPrice(), goods.getPrice());
             }
         }
     }

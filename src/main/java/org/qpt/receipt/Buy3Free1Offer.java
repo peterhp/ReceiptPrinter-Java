@@ -1,5 +1,6 @@
 package org.qpt.receipt;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,12 +19,11 @@ public class Buy3Free1Offer {
         return barcodeSet.contains(goods.getBarcode());
     }
 
-    public float discount(Item item) {
-        float save = 0.0f;
+    public BigDecimal discount(Item item) {
+        BigDecimal save = new BigDecimal(0);
 
         if (this.checkOffer(item.getGoods())) {
-            save = item.getGoods().getPrice() *
-                    (item.getQuantity() / 3);
+            save = item.getGoods().getPrice().multiply(new BigDecimal(item.getQuantity() / 3));
         }
 
         return save;

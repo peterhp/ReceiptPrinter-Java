@@ -2,7 +2,9 @@ package org.qpt.receipt;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.math.BigDecimal;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Sora on 2016/7/6.
@@ -12,7 +14,7 @@ public class ItemTest {
     private static Goods getGoods() {
         Goods goods = new Goods("ITEM000001", "可口可乐");
         goods.setCategory("食品", "饮料");
-        goods.setPrice(3.00f, "瓶");
+        goods.setPrice(new BigDecimal(3), "瓶");
         return goods;
     }
 

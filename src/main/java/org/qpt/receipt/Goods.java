@@ -1,5 +1,7 @@
 package org.qpt.receipt;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Sora on 2016/7/5.
  */
@@ -10,11 +12,14 @@ public class Goods {
     private String category;
     private String SubCategory;
     private String unit;
-    private float price;
+    private BigDecimal price;
 
     public Goods(String barcode, String name) {
         this.barcode = barcode;
         this.name = name;
+    }
+
+    public Goods() {
     }
 
     public void setCategory(String category, String subcategory) {
@@ -22,15 +27,11 @@ public class Goods {
         SubCategory = subcategory;
     }
 
-
-    public void setPrice(float price, String unit) {
-        this.unit = unit;
-        this.price = price;
-    }
-
     //fastjson required method
 
-    public Goods() {
+    public void setPrice(BigDecimal price, String unit) {
+        this.unit = unit;
+        this.price = price;
     }
 
     public String getBarcode() {
@@ -73,11 +74,11 @@ public class Goods {
         this.unit = unit;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }
