@@ -14,7 +14,7 @@ public class ItemTest {
     private static Goods getGoods() {
         Goods goods = new Goods("ITEM000001", "可口可乐");
         goods.setCategory("食品", "饮料");
-        goods.setPrice(new BigDecimal(3), "瓶");
+        goods.setPrice(BigDecimal.valueOf(3.00), "瓶");
         return goods;
     }
 
