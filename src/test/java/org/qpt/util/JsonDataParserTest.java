@@ -1,6 +1,7 @@
 package org.qpt.util;
 
 import org.junit.Test;
+import org.qpt.receipt.Cart;
 import org.qpt.receipt.Goods;
 
 import java.io.InputStream;
@@ -15,7 +16,9 @@ import static org.junit.Assert.assertEquals;
  */
 public class JsonDataParserTest {
 
+
     private static final String JSON_GOODS = "goods.json";
+    private static final String JSON_CART = "cart.json";
 
     private static InputStream getJsonStream(String strFile) {
         return JsonDataParserTest.class.getClassLoader()
@@ -49,4 +52,13 @@ public class JsonDataParserTest {
         }
     }
 
+    @Test
+    public void readCartFromStream() throws Exception {
+        InputStream in = JsonDataParserTest.getJsonStream(JSON_CART);
+        Cart cart = new Cart();
+        JsonDataParser.ReadCartFromStream(in, cart);
+        assertEquals(cart.QueryQuantity("ITEM000001"), 3);
+        assertEquals(cart.QueryQuantity("ITEM000003"), 2);
+        assertEquals(cart.QueryQuantity("ITEM000005"), 5);
+    }
 }

@@ -23,13 +23,19 @@ public class Cart {
 
     public int AddGoods(String mixedCode) {
         String[] strs = mixedCode.split("-");
+        String barcode = strs[0];
+        int quantity;
         if (strs.length < 2) {
-            throw new IllegalArgumentException("expect a string with \"-\"!");
+            quantity = 1;
+        } else {
+            quantity = Integer.parseInt(strs[1]);
         }
-        return AddGoods(strs[0], Integer.parseInt(strs[1]));
+        return AddGoods(barcode, quantity);
     }
 
     public int AddGoods(String barcode, int quantity) throws IllegalArgumentException {
+        if (quantity <= 0)
+            throw new IllegalArgumentException("the quantity expected to be positive");
         if (itemTable.isEmpty() || !itemTable.containsKey(barcode)) {
             Goods goods = goodInfoTable.get(barcode);
             if (goods != null) {
@@ -53,6 +59,13 @@ public class Cart {
         if (item.getQuantity() <= 0)
             itemTable.remove(barcode);
         return retQuantity;
+    }
+
+    public int QueryQuantity(String barcode) {
+        if (itemTable.isEmpty() || !itemTable.containsKey(barcode)) {
+            return 0;
+        }
+        return itemTable.get(barcode).getQuantity();
     }
 
     @Override
