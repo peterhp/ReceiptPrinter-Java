@@ -8,7 +8,9 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by JonirRings on 2016/7/6.
@@ -28,7 +30,7 @@ public class JsonDataParserTest {
     private static Goods getTrueGoodsInJson() {
         Goods goods = new Goods("ITEM000003", "苹果");
         goods.setCategory("食品", "水果");
-        goods.setPrice(new BigDecimal("5.50"), "斤");
+        goods.setPrice(BigDecimal.valueOf(5.50), "斤");
 
         return goods;
     }
@@ -47,7 +49,7 @@ public class JsonDataParserTest {
                 assertEquals(testGoods.getCategory(), goods.getCategory());
                 assertEquals(testGoods.getSubCategory(), goods.getSubCategory());
                 assertEquals(testGoods.getUnit(), goods.getUnit());
-                assertEquals(testGoods.getPrice(), goods.getPrice());
+                assertThat(testGoods.getPrice().compareTo(goods.getPrice()), is(0));
             }
         }
     }

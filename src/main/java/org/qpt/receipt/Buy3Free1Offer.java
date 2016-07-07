@@ -20,7 +20,7 @@ public class Buy3Free1Offer {
     }
 
     public BigDecimal discount(Item item) {
-        BigDecimal save = new BigDecimal(0);
+        BigDecimal save = BigDecimal.valueOf(0.00);
 
         if (this.checkOffer(item.getGoods())) {
             save = item.getGoods().getPrice().multiply(new BigDecimal(item.getQuantity() / 3));
